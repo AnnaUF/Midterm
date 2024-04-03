@@ -35,10 +35,19 @@
         });
            
         // Create featurelayer from feature service 
- const layer = new FeatureLayer({ 
-  // URL to the service 
-   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_3a0d026d25bb40aca2cac34988df949a/FeatureServer" //Your item URL Goes Here
+const layer = new FeatureLayer({
+    url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_3a0d026d25bb40aca2cac34988df949a/FeatureServer",
+    outFields: ["*"]
 });
+
+map.add(layer);
+
+const layer1 = new FeatureLayer({
+    url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_3a0d026d25bb40aca2cac34988df949a/FeatureServer",
+    popupTemplate: template
+});
+
+map.add(layer);
 map.add(layer);
             // Sets the center point of the view at a specified lon/lat
 view.center = [-98, 40];
