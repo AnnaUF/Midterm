@@ -35,11 +35,25 @@
         });
            
         // Create featurelayer from feature service 
- const layer = new FeatureLayer({ 
-  // URL to the service 
-   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_3a0d026d25bb40aca2cac34988df949a/FeatureServer" //Your item URL Goes Here
+const layer = new FeatureLayer({ 
+  url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_3a0d026d25bb40aca2cac34988df949a/FeatureServer",
+  outFields: ["*"],
+  popupTemplate: {
+    title: "{NAME}",
+    content: [{
+      type: "fields",
+      fieldInfos: [
+        {
+          fieldName: "what_date_was_the_issue_found",
+        },
+        {
+          fieldName: "what_was_the_product_name",
+        },
+        // Add more fieldInfos here for each field you want to display
+      ]
+    }]
+  }
 });
-
 
 map.add(layer);
             // Sets the center point of the view at a specified lon/lat
